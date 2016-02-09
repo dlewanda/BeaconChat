@@ -100,11 +100,21 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-Q8-rKU">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aEX-JX-9nq">
                                         <rect key="frame" x="0.0" y="30" width="560" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Major Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-Q8-rKU">
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minor Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-kP-Vh8">
+                                                <rect key="frame" x="280" y="0.0" width="280" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udd-5N-QH5">
                                         <rect key="frame" x="0.0" y="60" width="560" height="30"/>
                                         <state key="normal" title="Transmit"/>
@@ -119,11 +129,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="kaD-Q8-rKU" firstAttribute="leading" secondItem="hH2-lC-vl6" secondAttribute="leading" id="N8o-PH-9qw"/>
-                                    <constraint firstItem="7Ge-Dl-ucz" firstAttribute="leading" secondItem="kaD-Q8-rKU" secondAttribute="leading" id="bgN-G0-Ymy"/>
-                                    <constraint firstAttribute="trailing" secondItem="kaD-Q8-rKU" secondAttribute="trailing" id="tw1-1E-L8a"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,7 +142,9 @@
                     </view>
                     <connections>
                         <outlet property="beaconStatusLabel" destination="9bd-ND-ptZ" id="o2x-4k-eNb"/>
+                        <outlet property="majorIdField" destination="kaD-Q8-rKU" id="Mg2-cH-H3K"/>
                         <outlet property="messageServerAddress" destination="7Ge-Dl-ucz" id="Ple-w9-vch"/>
+                        <outlet property="minorIdField" destination="ahx-kP-Vh8" id="Itm-By-Sj6"/>
                         <outlet property="transmitButton" destination="udd-5N-QH5" id="ZAy-hK-gSh"/>
                     </connections>
                 </viewController>

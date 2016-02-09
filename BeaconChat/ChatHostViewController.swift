@@ -14,18 +14,18 @@ import MZFayeClient
 class ChatHostViewController: FayeClientViewController, FayeClientDelegate, CBPeripheralManagerDelegate {
 
     @IBOutlet weak var messageServerAddress: UITextField!
+    @IBOutlet weak var majorIdField: UITextField!
+    @IBOutlet weak var minorIdField: UITextField!
     @IBOutlet weak var transmitButton: UIButton!
     @IBOutlet weak var beaconStatusLabel: UILabel!
 
     private var transmitting = false
-    private let majorId:CLBeaconMajorValue = 10 //TODO - replace with configurable value
-    private let minorId:CLBeaconMinorValue = 28 //TODO - replace with configurable value
+    private var majorId:CLBeaconMajorValue = 10 //TODO - replace with configurable value
+    private var minorId:CLBeaconMinorValue = 28 //TODO - replace with configurable value
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        self.region = CLBeaconRegion(proximityUUID:uuidObj, major: majorId, minor: minorId, identifier: "com.dlewanda.beaconchat")
 
     }
 
@@ -40,6 +40,7 @@ class ChatHostViewController: FayeClientViewController, FayeClientDelegate, CBPe
 
     func subscribed(channel: String) {
         NSLog("Chat Host Subscribed to \(channel)")
+        self.region = CLBeaconRegion(proximityUUID:uuidObj, major: majorId, minor: minorId, identifier: "com.dlewanda.beaconchat")
         data = self.region.peripheralDataWithMeasuredPower(nil)
         manager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
     }
@@ -64,17 +65,22 @@ class ChatHostViewController: FayeClientViewController, FayeClientDelegate, CBPe
         self.manager.stopAdvertising()
         self.beaconStatusLabel.text = "Beacon Off"
         self.beaconStatusLabel.textColor = UIColor.redColor()
+        self.transmitButton.setTitle("Transmit", forState: UIControlState.Normal)
+        self.transmitButton.sizeToFit()
         transmitting = false
     }
 
+    // MARK: IBActions
     @IBAction func goBack(sender: AnyObject) {
         disconnectFromServer(disconnected, failure: failure)
     }
 
     @IBAction func toggleTransmitting(sender: AnyObject) {
         if !transmitting {
+            majorId = UInt16(majorIdField.text!)! as CLBeaconMajorValue
+            minorId = UInt16(minorIdField.text!)! as CLBeaconMinorValue
             connectToServer(messageServerAddress.text!,
-                channelName: "browser",
+                channelName: "User\(majorId)Device\(minorId)",
                 connected: connected,
                 subscribed: subscribed,
                 messageReceived: messageReceived,
@@ -90,7 +96,7 @@ class ChatHostViewController: FayeClientViewController, FayeClientDelegate, CBPe
             NSLog("powered on")
             self.manager.startAdvertising(data as? [String : AnyObject])
             self.transmitting = true
-            self.transmitButton.titleLabel?.text = "Stop Transmitting"
+            self.transmitButton.setTitle("Stop Transmitting", forState: UIControlState.Normal)
             self.transmitButton.sizeToFit()
             self.beaconStatusLabel.text = "Transmitting!"
             self.beaconStatusLabel.textColor = UIColor.greenColor()
