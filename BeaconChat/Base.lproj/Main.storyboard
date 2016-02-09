@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,190 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lTB-Eg-ohY">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeaconChat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Q8-DV-9H0">
+                                        <rect key="frame" x="208" y="0.0" width="145" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="YIw-iP-yKz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mkB-qL-Sos">
+                                        <rect key="frame" x="0.0" y="20" width="560" height="560"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kY-dZ-sx1">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="280"/>
+                                                <state key="normal" title="Host a Chat"/>
+                                                <connections>
+                                                    <segue destination="Mmg-7b-RCM" kind="show" id="h7w-sC-RrL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BA-ka-g7S">
+                                                <rect key="frame" x="0.0" y="280" width="560" height="280"/>
+                                                <state key="normal" title="Join a Chat"/>
+                                                <connections>
+                                                    <segue destination="2XC-8x-FMG" kind="show" id="5Rf-DF-SUv"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="mkB-qL-Sos" firstAttribute="leading" secondItem="lTB-Eg-ohY" secondAttribute="leading" id="kmJ-Qc-PWg"/>
+                                    <constraint firstAttribute="trailing" secondItem="mkB-qL-Sos" secondAttribute="trailing" id="nub-ma-33u"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lTB-Eg-ohY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Hjv-2x-5DK"/>
+                            <constraint firstItem="lTB-Eg-ohY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="NKk-f5-d59"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lTB-Eg-ohY" secondAttribute="trailing" id="Sne-hO-ev7"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lTB-Eg-ohY" secondAttribute="bottom" id="UF0-Gq-U67"/>
+                            <constraint firstItem="lTB-Eg-ohY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ade-FU-0r5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lTB-Eg-ohY" secondAttribute="bottom" id="rZB-uk-UcQ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Chat Host View Controller-->
+        <scene sceneID="Yht-Bo-fdb">
+            <objects>
+                <viewController id="Mmg-7b-RCM" customClass="ChatHostViewController" customModule="BeaconChat" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PhY-ob-tvf"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Bj-d7-mem"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zZJ-fo-Nkp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmw-lj-PIj">
+                                <rect key="frame" x="20" y="570" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="Mmg-7b-RCM" eventType="touchUpInside" id="VDE-Mf-ZzB"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="hH2-lC-vl6">
+                                <rect key="frame" x="20" y="20" width="560" height="111"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://192.168.1.13:8000/faye" borderStyle="roundedRect" placeholder="Message Server Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-Dl-ucz">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="L24-lu-yZ5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-Q8-rKU">
+                                        <rect key="frame" x="0.0" y="30" width="560" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udd-5N-QH5">
+                                        <rect key="frame" x="0.0" y="60" width="560" height="30"/>
+                                        <state key="normal" title="Transmit"/>
+                                        <connections>
+                                            <action selector="toggleTransmitting:" destination="Mmg-7b-RCM" eventType="touchUpInside" id="iQW-6E-cPi"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bd-ND-ptZ">
+                                        <rect key="frame" x="0.0" y="90" width="560" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="kaD-Q8-rKU" firstAttribute="leading" secondItem="hH2-lC-vl6" secondAttribute="leading" id="N8o-PH-9qw"/>
+                                    <constraint firstItem="7Ge-Dl-ucz" firstAttribute="leading" secondItem="kaD-Q8-rKU" secondAttribute="leading" id="bgN-G0-Ymy"/>
+                                    <constraint firstAttribute="trailing" secondItem="kaD-Q8-rKU" secondAttribute="trailing" id="tw1-1E-L8a"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hH2-lC-vl6" firstAttribute="top" secondItem="PhY-ob-tvf" secondAttribute="bottom" id="6lX-aw-ehx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hH2-lC-vl6" secondAttribute="trailing" id="ZVj-Tn-O4T"/>
+                            <constraint firstItem="nmw-lj-PIj" firstAttribute="leading" secondItem="zZJ-fo-Nkp" secondAttribute="leadingMargin" id="d2W-G7-ZJx"/>
+                            <constraint firstItem="7Bj-d7-mem" firstAttribute="top" secondItem="nmw-lj-PIj" secondAttribute="bottom" id="nr6-FM-DRB"/>
+                            <constraint firstItem="hH2-lC-vl6" firstAttribute="leading" secondItem="zZJ-fo-Nkp" secondAttribute="leadingMargin" id="rDN-iU-KM7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="beaconStatusLabel" destination="9bd-ND-ptZ" id="o2x-4k-eNb"/>
+                        <outlet property="messageServerAddress" destination="7Ge-Dl-ucz" id="Ple-w9-vch"/>
+                        <outlet property="transmitButton" destination="udd-5N-QH5" id="ZAy-hK-gSh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QdM-Kf-cd7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="164"/>
+        </scene>
+        <!--Chat Guest View Controller-->
+        <scene sceneID="mtd-QN-0mm">
+            <objects>
+                <viewController id="2XC-8x-FMG" customClass="ChatGuestViewController" customModule="BeaconChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xMv-zR-8Pm"/>
+                        <viewControllerLayoutGuide type="bottom" id="fpx-Qu-wt0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="amO-ja-jY9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detecting Beacons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azw-tw-gzn">
+                                <rect key="frame" x="228" y="58" width="145" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVl-x4-HC6">
+                                <rect key="frame" x="20" y="570" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="goBack:" destination="2XC-8x-FMG" eventType="touchUpInside" id="1M9-WA-upE"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="KfG-NC-NZM"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://192.168.1.13:8000/faye" borderStyle="roundedRect" placeholder="Message Server Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ly-5t-6gn">
+                                <rect key="frame" x="20" y="20" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6ly-5t-6gn" firstAttribute="leading" secondItem="amO-ja-jY9" secondAttribute="leadingMargin" id="BtW-qI-OtG"/>
+                            <constraint firstItem="azw-tw-gzn" firstAttribute="top" secondItem="6ly-5t-6gn" secondAttribute="bottom" constant="8" symbolic="YES" id="OnQ-rM-VVf"/>
+                            <constraint firstItem="fpx-Qu-wt0" firstAttribute="top" secondItem="dVl-x4-HC6" secondAttribute="bottom" id="VJe-C9-OLq"/>
+                            <constraint firstItem="azw-tw-gzn" firstAttribute="centerX" secondItem="amO-ja-jY9" secondAttribute="centerX" id="fpA-fq-Dd0"/>
+                            <constraint firstItem="azw-tw-gzn" firstAttribute="top" secondItem="xMv-zR-8Pm" secondAttribute="bottom" constant="8" symbolic="YES" id="g41-QF-sm2"/>
+                            <constraint firstItem="6ly-5t-6gn" firstAttribute="top" secondItem="xMv-zR-8Pm" secondAttribute="bottom" id="o70-cv-qrV"/>
+                            <constraint firstItem="dVl-x4-HC6" firstAttribute="leading" secondItem="amO-ja-jY9" secondAttribute="leadingMargin" id="oby-Op-G0K"/>
+                            <constraint firstItem="6ly-5t-6gn" firstAttribute="trailing" secondItem="amO-ja-jY9" secondAttribute="trailingMargin" id="vT2-0o-OrK"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="g41-QF-sm2"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="messageServerAddress" destination="6ly-5t-6gn" id="i3c-7w-ryM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZaO-wb-I42" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="884"/>
         </scene>
     </scenes>
 </document>
