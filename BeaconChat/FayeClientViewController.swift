@@ -21,7 +21,12 @@ protocol FayeClientDelegate {
 
 class FayeClientViewController: UIViewController {
 
+    internal var isConnected = false
+    internal var channelName:String = ""
+
     private var fayeClient: MZFayeClient
+
+    var chatViewController = ChatViewController()
 
     // the UUID our iBeacons will use
     //TODO - replace with field from config_api response
@@ -37,14 +42,25 @@ class FayeClientViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
+    func addChatViewController(chatView: UIView) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        chatViewController = storyboard.instantiateViewControllerWithIdentifier("ChatViewController") as! ChatViewController
+        chatViewController.fayeClientVC = self
+        self.addChildViewController(chatViewController)
+        chatViewController.view.frame = chatView.bounds
+        chatView.addSubview(chatViewController.view)
+        chatViewController.didMoveToParentViewController(self)
+    }
+
     func connectToServer(serverAddress: String, channelName: String,
         connected:()->Void,
         subscribed:(String)->Void,
         messageReceived:(message:Dictionary<NSObject, AnyObject>)->Void,
         failure:(error: NSError)->Void) {
             let serverUrl = NSURL.init(string: serverAddress)
+            self.channelName = "/\(channelName)"
             fayeClient = MZFayeClient(URL: serverUrl) //TODO: check if this will this handle DNS, and autofill http:// prefix?
-            fayeClient.subscribeToChannel("/\(channelName)", success: {
+            fayeClient.subscribeToChannel(self.channelName, success: {
                 subscribed(channelName)
                 }, failure: { (error) -> Void in
                     failure(error: error)
@@ -53,22 +69,34 @@ class FayeClientViewController: UIViewController {
             })
 
             fayeClient.connect({ () -> Void in
+                self.isConnected = true
                 connected()
-                self.fayeClient.sendMessage(["text":"hello!"], toChannel: "/browser", success: { () -> Void in
-                    NSLog("Message sent successfully")
-                    }, failure: { (error) -> Void in
-                        NSLog("Error sending message: \(error)")
-                })
+                self.sendMessage("Hello")
                 }) { (error) -> Void in
                     failure(error: error)
             }
     }
 
     func disconnectFromServer(disconnected:()->Void, failure:(error: NSError)->Void) {
-        fayeClient.disconnect({ () -> Void in
-            disconnected()
+        if isConnected {
+            fayeClient.disconnect({ () -> Void in
+                self.isConnected = false
+                disconnected()
+                }, failure: { (error) -> Void in
+                    failure(error: error)
+            })
+        }
+    }
+
+    func sendMessage(message: String) {
+        self.fayeClient.sendMessage(["text":message], toChannel: self.channelName, success: { () -> Void in
+            NSLog("Message sent successfully")
             }, failure: { (error) -> Void in
-            failure(error: error)
+                NSLog("Error sending message: \(error)")
         })
+    }
+
+    func postMessage(message: String) {
+        self.chatViewController.messageReceived(message)
     }
 }

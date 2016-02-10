@@ -17,6 +17,7 @@ class ChatHostViewController: FayeClientViewController, FayeClientDelegate, CBPe
     @IBOutlet weak var majorIdField: UITextField!
     @IBOutlet weak var minorIdField: UITextField!
     @IBOutlet weak var transmitButton: UIButton!
+    @IBOutlet weak var chatView: UIView!
     @IBOutlet weak var beaconStatusLabel: UILabel!
 
     private var transmitting = false
@@ -25,6 +26,8 @@ class ChatHostViewController: FayeClientViewController, FayeClientDelegate, CBPe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        addChatViewController(chatView)
         // Do any additional setup after loading the view, typically from a nib.
 
     }
@@ -52,6 +55,7 @@ class ChatHostViewController: FayeClientViewController, FayeClientDelegate, CBPe
     func messageReceived(message: Dictionary<NSObject, AnyObject>) {
         if let messageString = message["text"] {
             NSLog("Chat Host received message: \(messageString)")
+            postMessage(messageString as! String)
         }
     }
 

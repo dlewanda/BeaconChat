@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A30454041C6A6A5F006D1650 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30454031C6A6A5F006D1650 /* ChatViewController.swift */; };
 		A3F4B6901C66975400E6B1EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B68F1C66975400E6B1EC /* AppDelegate.swift */; };
 		A3F4B6921C66975400E6B1EC /* ChatHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B6911C66975400E6B1EC /* ChatHostViewController.swift */; };
 		A3F4B6951C66975400E6B1EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3F4B6931C66975400E6B1EC /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		410D8B2DA033CF4305DD936C /* Pods_BeaconChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C56A29727EBE7FEAF4C3468 /* Pods-BeaconChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconChat/Pods-BeaconChat.debug.xcconfig"; sourceTree = "<group>"; };
+		A30454031C6A6A5F006D1650 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		A3F4B68C1C66975400E6B1EC /* BeaconChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F4B68F1C66975400E6B1EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3F4B6911C66975400E6B1EC /* ChatHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHostViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				A3F4B68F1C66975400E6B1EC /* AppDelegate.swift */,
 				A3F4B6C31C6781F000E6B1EC /* ChatGuestViewController.swift */,
 				A3F4B6911C66975400E6B1EC /* ChatHostViewController.swift */,
+				A30454031C6A6A5F006D1650 /* ChatViewController.swift */,
 				A3F4B6C51C67915500E6B1EC /* FayeClientViewController.swift */,
 				A3F4B6931C66975400E6B1EC /* Main.storyboard */,
 				A3F4B6961C66975400E6B1EC /* Assets.xcassets */,
@@ -343,6 +346,7 @@
 				A3F4B6921C66975400E6B1EC /* ChatHostViewController.swift in Sources */,
 				A3F4B6C61C67915500E6B1EC /* FayeClientViewController.swift in Sources */,
 				A3F4B6C41C6781F000E6B1EC /* ChatGuestViewController.swift in Sources */,
+				A30454041C6A6A5F006D1650 /* ChatViewController.swift in Sources */,
 				A3F4B6901C66975400E6B1EC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

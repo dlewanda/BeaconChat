@@ -82,66 +82,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmw-lj-PIj">
-                                <rect key="frame" x="20" y="570" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="goBack:" destination="Mmg-7b-RCM" eventType="touchUpInside" id="VDE-Mf-ZzB"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="hH2-lC-vl6">
-                                <rect key="frame" x="20" y="20" width="560" height="111"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Rde-xV-YHm">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://192.168.1.13:8000/faye" borderStyle="roundedRect" placeholder="Message Server Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-Dl-ucz">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="L24-lu-yZ5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aEX-JX-9nq">
-                                        <rect key="frame" x="0.0" y="30" width="560" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hH2-lC-vl6">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="90"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Major Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-Q8-rKU">
-                                                <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://192.168.1.13:8000/faye" borderStyle="roundedRect" placeholder="Message Server Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-Dl-ucz">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minor Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-kP-Vh8">
-                                                <rect key="frame" x="280" y="0.0" width="280" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="aEX-JX-9nq">
+                                                <rect key="frame" x="0.0" y="30" width="560" height="30"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Major Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-Q8-rKU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Minor Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahx-kP-Vh8">
+                                                        <rect key="frame" x="280" y="0.0" width="280" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cYm-iu-Reo">
+                                                <rect key="frame" x="0.0" y="60" width="560" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udd-5N-QH5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="449" height="30"/>
+                                                        <state key="normal" title="Transmit"/>
+                                                        <connections>
+                                                            <action selector="toggleTransmitting:" destination="Mmg-7b-RCM" eventType="touchUpInside" id="iQW-6E-cPi"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bd-ND-ptZ">
+                                                        <rect key="frame" x="449" y="0.0" width="111" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udd-5N-QH5">
-                                        <rect key="frame" x="0.0" y="60" width="560" height="30"/>
-                                        <state key="normal" title="Transmit"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byo-Rh-13G">
+                                        <rect key="frame" x="0.0" y="90" width="560" height="460"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmw-lj-PIj">
+                                        <rect key="frame" x="0.0" y="550" width="560" height="30"/>
+                                        <state key="normal" title="Back"/>
                                         <connections>
-                                            <action selector="toggleTransmitting:" destination="Mmg-7b-RCM" eventType="touchUpInside" id="iQW-6E-cPi"/>
+                                            <action selector="goBack:" destination="Mmg-7b-RCM" eventType="touchUpInside" id="VDE-Mf-ZzB"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="fud-5s-YXC"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beacon Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bd-ND-ptZ">
-                                        <rect key="frame" x="0.0" y="90" width="560" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hH2-lC-vl6" firstAttribute="top" secondItem="PhY-ob-tvf" secondAttribute="bottom" id="6lX-aw-ehx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hH2-lC-vl6" secondAttribute="trailing" id="ZVj-Tn-O4T"/>
-                            <constraint firstItem="nmw-lj-PIj" firstAttribute="leading" secondItem="zZJ-fo-Nkp" secondAttribute="leadingMargin" id="d2W-G7-ZJx"/>
-                            <constraint firstItem="7Bj-d7-mem" firstAttribute="top" secondItem="nmw-lj-PIj" secondAttribute="bottom" id="nr6-FM-DRB"/>
-                            <constraint firstItem="hH2-lC-vl6" firstAttribute="leading" secondItem="zZJ-fo-Nkp" secondAttribute="leadingMargin" id="rDN-iU-KM7"/>
+                            <constraint firstItem="7Bj-d7-mem" firstAttribute="top" secondItem="Rde-xV-YHm" secondAttribute="bottom" id="0Qy-lf-SCo"/>
+                            <constraint firstItem="Rde-xV-YHm" firstAttribute="leading" secondItem="zZJ-fo-Nkp" secondAttribute="leadingMargin" id="E3S-db-oCu"/>
+                            <constraint firstItem="Rde-xV-YHm" firstAttribute="top" secondItem="PhY-ob-tvf" secondAttribute="bottom" id="Qhv-p3-46a"/>
+                            <constraint firstItem="Rde-xV-YHm" firstAttribute="trailing" secondItem="zZJ-fo-Nkp" secondAttribute="trailingMargin" id="fwQ-6L-TQi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="beaconStatusLabel" destination="9bd-ND-ptZ" id="o2x-4k-eNb"/>
+                        <outlet property="chatView" destination="byo-Rh-13G" id="Imo-0k-MFV"/>
                         <outlet property="majorIdField" destination="kaD-Q8-rKU" id="Mg2-cH-H3K"/>
                         <outlet property="messageServerAddress" destination="7Ge-Dl-ucz" id="Ple-w9-vch"/>
                         <outlet property="minorIdField" destination="ahx-kP-Vh8" id="Itm-By-Sj6"/>
@@ -164,50 +176,144 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detecting Beacons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azw-tw-gzn">
-                                <rect key="frame" x="228" y="58" width="145" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVl-x4-HC6">
-                                <rect key="frame" x="20" y="570" width="34" height="30"/>
-                                <state key="normal" title="Back"/>
-                                <connections>
-                                    <action selector="goBack:" destination="2XC-8x-FMG" eventType="touchUpInside" id="1M9-WA-upE"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="KfG-NC-NZM"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://192.168.1.13:8000/faye" borderStyle="roundedRect" placeholder="Message Server Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ly-5t-6gn">
-                                <rect key="frame" x="20" y="20" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vGG-OT-0Q0">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://192.168.1.13:8000/faye" borderStyle="roundedRect" placeholder="Message Server Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ly-5t-6gn">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detecting Beacons" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azw-tw-gzn">
+                                        <rect key="frame" x="0.0" y="30" width="560" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R86-v3-Mpn">
+                                        <rect key="frame" x="0.0" y="51" width="560" height="499"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dVl-x4-HC6">
+                                        <rect key="frame" x="0.0" y="549" width="560" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="YF5-b7-W7f"/>
+                                        </constraints>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="goBack:" destination="2XC-8x-FMG" eventType="touchUpInside" id="1M9-WA-upE"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="KfG-NC-NZM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dVl-x4-HC6" firstAttribute="top" secondItem="vGG-OT-0Q0" secondAttribute="top" constant="550" id="2Of-IZ-SnQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="R86-v3-Mpn" secondAttribute="bottom" constant="30" id="7Jz-bd-5Hq"/>
+                                    <constraint firstItem="R86-v3-Mpn" firstAttribute="top" secondItem="vGG-OT-0Q0" secondAttribute="top" constant="51" id="LN1-fz-Hae"/>
+                                    <constraint firstItem="dVl-x4-HC6" firstAttribute="top" secondItem="vGG-OT-0Q0" secondAttribute="top" constant="524" id="cyM-e5-5RN"/>
+                                    <constraint firstItem="R86-v3-Mpn" firstAttribute="top" secondItem="vGG-OT-0Q0" secondAttribute="top" constant="51" id="zsk-0e-gus"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Jz-bd-5Hq"/>
+                                        <exclude reference="LN1-fz-Hae"/>
+                                        <exclude reference="zsk-0e-gus"/>
+                                        <exclude reference="2Of-IZ-SnQ"/>
+                                        <exclude reference="cyM-e5-5RN"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6ly-5t-6gn" firstAttribute="leading" secondItem="amO-ja-jY9" secondAttribute="leadingMargin" id="BtW-qI-OtG"/>
-                            <constraint firstItem="azw-tw-gzn" firstAttribute="top" secondItem="6ly-5t-6gn" secondAttribute="bottom" constant="8" symbolic="YES" id="OnQ-rM-VVf"/>
-                            <constraint firstItem="fpx-Qu-wt0" firstAttribute="top" secondItem="dVl-x4-HC6" secondAttribute="bottom" id="VJe-C9-OLq"/>
-                            <constraint firstItem="azw-tw-gzn" firstAttribute="centerX" secondItem="amO-ja-jY9" secondAttribute="centerX" id="fpA-fq-Dd0"/>
-                            <constraint firstItem="azw-tw-gzn" firstAttribute="top" secondItem="xMv-zR-8Pm" secondAttribute="bottom" constant="8" symbolic="YES" id="g41-QF-sm2"/>
-                            <constraint firstItem="6ly-5t-6gn" firstAttribute="top" secondItem="xMv-zR-8Pm" secondAttribute="bottom" id="o70-cv-qrV"/>
-                            <constraint firstItem="dVl-x4-HC6" firstAttribute="leading" secondItem="amO-ja-jY9" secondAttribute="leadingMargin" id="oby-Op-G0K"/>
-                            <constraint firstItem="6ly-5t-6gn" firstAttribute="trailing" secondItem="amO-ja-jY9" secondAttribute="trailingMargin" id="vT2-0o-OrK"/>
+                            <constraint firstItem="vGG-OT-0Q0" firstAttribute="top" secondItem="xMv-zR-8Pm" secondAttribute="bottom" id="3oR-nY-qfh"/>
+                            <constraint firstItem="vGG-OT-0Q0" firstAttribute="leading" secondItem="amO-ja-jY9" secondAttribute="leadingMargin" id="6zF-j6-6rj"/>
+                            <constraint firstItem="vGG-OT-0Q0" firstAttribute="trailing" secondItem="amO-ja-jY9" secondAttribute="trailingMargin" id="JAZ-eC-j5R"/>
+                            <constraint firstItem="fpx-Qu-wt0" firstAttribute="top" secondItem="vGG-OT-0Q0" secondAttribute="bottom" id="j3A-0P-Nse"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="g41-QF-sm2"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
+                        <outlet property="chatView" destination="R86-v3-Mpn" id="blm-hg-9TT"/>
                         <outlet property="messageServerAddress" destination="6ly-5t-6gn" id="i3c-7w-ryM"/>
+                        <outlet property="statusLabel" destination="azw-tw-gzn" id="63f-eV-5IC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaO-wb-I42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1234" y="884"/>
         </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="fOB-A8-a6a">
+            <objects>
+                <viewController storyboardIdentifier="ChatViewController" title="Chat View Controller" id="Cof-m4-xb3" customClass="ChatViewController" customModule="BeaconChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wT1-HA-FRl"/>
+                        <viewControllerLayoutGuide type="bottom" id="UAw-o1-NPn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iNf-QJ-jgd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="b9l-Na-wud">
+                                <rect key="frame" x="20" y="0.0" width="560" height="600"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6ft-xD-oz2">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="570"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="3nF-St-0C1">
+                                                <rect key="frame" x="0.0" y="28" width="560" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3nF-St-0C1" id="ZMB-9b-Wkr">
+                                                    <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNd-FX-UWY">
+                                        <rect key="frame" x="0.0" y="570" width="560" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qFP-id-nKG">
+                                                <rect key="frame" x="0.0" y="0.0" width="524" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VM2-Rh-noI">
+                                                <rect key="frame" x="524" y="0.0" width="36" height="30"/>
+                                                <state key="normal" title="Send"/>
+                                                <connections>
+                                                    <action selector="sendMessage:" destination="Cof-m4-xb3" eventType="touchUpInside" id="8HV-TN-T2V"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="N7U-7D-2rO"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b9l-Na-wud" firstAttribute="leading" secondItem="iNf-QJ-jgd" secondAttribute="leadingMargin" id="Au7-So-Qa8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b9l-Na-wud" secondAttribute="trailing" id="CIb-28-4n2"/>
+                            <constraint firstItem="b9l-Na-wud" firstAttribute="top" secondItem="iNf-QJ-jgd" secondAttribute="topMargin" id="Ptm-fE-bQq"/>
+                            <constraint firstItem="UAw-o1-NPn" firstAttribute="top" secondItem="b9l-Na-wud" secondAttribute="bottom" id="wFh-zj-rKJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chatLogTableView" destination="6ft-xD-oz2" id="Gve-ZP-Rsk"/>
+                        <outlet property="messageTextField" destination="qFP-id-nKG" id="bcc-YS-7gi"/>
+                        <outlet property="sendButton" destination="VM2-Rh-noI" id="zdJ-CF-pgK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7aq-1U-2DL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1844" y="750"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KfG-NC-NZM"/>
+    </inferredMetricsTieBreakers>
 </document>

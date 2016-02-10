@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "MZFayeClient/MZFayeClient.h"
+#import "SlackTextViewController/SLKTextViewController.h"
 #endif
 
 #endif /* BeaconChat_Bridiging_Header_h */
