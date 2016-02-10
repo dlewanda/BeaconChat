@@ -11,6 +11,14 @@ import CoreLocation
 import CoreBluetooth
 import MZFayeClient
 
+enum FayeClientState
+{
+    case DISCONNECTED
+    case CONNECTING
+    case CONNECTED
+    case DISCONNECTING
+}
+
 //classes that subclass FayeClientViewController should implement this protocol
 protocol FayeClientDelegate {
     func connected()
@@ -21,7 +29,7 @@ protocol FayeClientDelegate {
 
 class FayeClientViewController: UIViewController {
 
-    internal var isConnected = false
+    internal var state: FayeClientState = FayeClientState.DISCONNECTED
     internal var channelName:String = ""
 
     private var fayeClient: MZFayeClient
@@ -57,6 +65,7 @@ class FayeClientViewController: UIViewController {
         subscribed:(String)->Void,
         messageReceived:(message:Dictionary<NSObject, AnyObject>)->Void,
         failure:(error: NSError)->Void) {
+            state = .CONNECTING
             let serverUrl = NSURL.init(string: serverAddress)
             self.channelName = "/\(channelName)"
             fayeClient = MZFayeClient(URL: serverUrl) //TODO: check if this will this handle DNS, and autofill http:// prefix?
@@ -69,7 +78,7 @@ class FayeClientViewController: UIViewController {
             })
 
             fayeClient.connect({ () -> Void in
-                self.isConnected = true
+                self.state = .CONNECTED
                 connected()
                 self.sendMessage("Hello")
                 }) { (error) -> Void in
@@ -78,9 +87,10 @@ class FayeClientViewController: UIViewController {
     }
 
     func disconnectFromServer(disconnected:()->Void, failure:(error: NSError)->Void) {
-        if isConnected {
+        if state == .CONNECTED || state == .CONNECTING {
+            state = .DISCONNECTING
             fayeClient.disconnect({ () -> Void in
-                self.isConnected = false
+                self.state = .DISCONNECTED
                 disconnected()
                 }, failure: { (error) -> Void in
                     failure(error: error)

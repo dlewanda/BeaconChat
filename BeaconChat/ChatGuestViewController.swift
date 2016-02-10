@@ -92,8 +92,9 @@ class ChatGuestViewController: FayeClientViewController, FayeClientDelegate, CLL
         }
 
         if let beacon = beacons.last {
-            if !self.isConnected {
-                if self.isViewLoaded() && self.view.window != nil {
+            switch self.state {
+            case .DISCONNECTED:
+                if self.isViewLoaded() {
                     //use the last beacon found and connect to the server no matter how close the host is - at least we know about it
                     connectToServer(messageServerAddress.text!,
                         channelName: "User\(beacon.major)Device\(beacon.minor)",
@@ -102,7 +103,14 @@ class ChatGuestViewController: FayeClientViewController, FayeClientDelegate, CLL
                         messageReceived: messageReceived,
                         failure: failure)
                 }
-            } else {
+                break;
+            case .CONNECTING:
+                //do nothing while in transient state
+                break;
+            case .DISCONNECTING:
+                //do nothing while in transient state
+                break;
+            case .CONNECTED:
                 //if connected, let the host know how close you are
                 if (beacon.proximity == CLProximity.Unknown) {
                     sendMessage("I don't know how far away I am from you")
@@ -113,6 +121,7 @@ class ChatGuestViewController: FayeClientViewController, FayeClientDelegate, CLL
                 } else if (beacon.proximity == CLProximity.Far) {
                     sendMessage("I'm far away")
                 }
+                break;
             }
         }
     }
