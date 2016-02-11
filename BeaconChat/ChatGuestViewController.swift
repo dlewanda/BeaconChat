@@ -19,12 +19,13 @@ class ChatGuestViewController: FayeClientViewController, FayeClientDelegate, CLL
 
     internal var fayeClient:MZFayeClient = MZFayeClient(URL: NSURL())
     private var locationManager = CLLocationManager()
+    private var proximity = CLProximity.Unknown
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addChatViewController(chatView)
-        
+
         region = CLBeaconRegion(proximityUUID: uuidObj, identifier: "com.dlewanda.beaconchat")
         self.locationManager.delegate = self
         self.locationManager.requestAlwaysAuthorization()
@@ -112,14 +113,17 @@ class ChatGuestViewController: FayeClientViewController, FayeClientDelegate, CLL
                 break;
             case .CONNECTED:
                 //if connected, let the host know how close you are
-                if (beacon.proximity == CLProximity.Unknown) {
-                    sendMessage("I don't know how far away I am from you")
-                } else if (beacon.proximity == CLProximity.Immediate) {
-                    sendMessage("I'm really close to you!")
-                } else if (beacon.proximity == CLProximity.Near) {
-                    sendMessage("I'm near you")
-                } else if (beacon.proximity == CLProximity.Far) {
-                    sendMessage("I'm far away")
+                if(beacon.proximity != self.proximity) {
+                    self.proximity = beacon.proximity
+                    if (beacon.proximity == CLProximity.Unknown) {
+                        sendMessage("I don't know how far away I am from you")
+                    } else if (beacon.proximity == CLProximity.Immediate) {
+                        sendMessage("I'm really close to you!")
+                    } else if (beacon.proximity == CLProximity.Near) {
+                        sendMessage("I'm near you")
+                    } else if (beacon.proximity == CLProximity.Far) {
+                        sendMessage("I'm far away")
+                    }
                 }
                 break;
             }

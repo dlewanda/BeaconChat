@@ -64,6 +64,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         nextIndex = (nextIndex + 1) % MAX_SIZE
         chatLogTableView.reloadData()
+        //scroll table to end after reload
+        let lastIndexPath = NSIndexPath(forRow: chatLogTableView.numberOfRowsInSection(0) - 1, inSection: chatLogTableView.numberOfSections - 1)
+        chatLogTableView.scrollToRowAtIndexPath(lastIndexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
     
     // MARK: UITableViewDelegate

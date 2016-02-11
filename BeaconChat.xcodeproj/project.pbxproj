@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A30454041C6A6A5F006D1650 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30454031C6A6A5F006D1650 /* ChatViewController.swift */; };
+		A30454071C6B86EA006D1650 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A30454051C6B86EA006D1650 /* LICENSE */; };
+		A30454081C6B86EA006D1650 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A30454061C6B86EA006D1650 /* README.md */; };
 		A3F4B6901C66975400E6B1EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B68F1C66975400E6B1EC /* AppDelegate.swift */; };
 		A3F4B6921C66975400E6B1EC /* ChatHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B6911C66975400E6B1EC /* ChatHostViewController.swift */; };
 		A3F4B6951C66975400E6B1EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3F4B6931C66975400E6B1EC /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		410D8B2DA033CF4305DD936C /* Pods_BeaconChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C56A29727EBE7FEAF4C3468 /* Pods-BeaconChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconChat/Pods-BeaconChat.debug.xcconfig"; sourceTree = "<group>"; };
 		A30454031C6A6A5F006D1650 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		A30454051C6B86EA006D1650 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A30454061C6B86EA006D1650 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A3F4B68C1C66975400E6B1EC /* BeaconChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3F4B68F1C66975400E6B1EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3F4B6911C66975400E6B1EC /* ChatHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHostViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 		A3F4B6831C66975400E6B1EC = {
 			isa = PBXGroup;
 			children = (
+				A30454051C6B86EA006D1650 /* LICENSE */,
+				A30454061C6B86EA006D1650 /* README.md */,
 				A3F4B6BD1C66D93A00E6B1EC /* BeaconChat-Bridging-Header.h */,
 				A3F4B68E1C66975400E6B1EC /* BeaconChat */,
 				A3F4B6A31C66975400E6B1EC /* BeaconChatTests */,
@@ -270,6 +276,7 @@
 			files = (
 				A3F4B69A1C66975400E6B1EC /* LaunchScreen.storyboard in Resources */,
 				A3F4B6971C66975400E6B1EC /* Assets.xcassets in Resources */,
+				A30454071C6B86EA006D1650 /* LICENSE in Resources */,
 				A3F4B6951C66975400E6B1EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +350,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30454081C6B86EA006D1650 /* README.md in Sources */,
 				A3F4B6921C66975400E6B1EC /* ChatHostViewController.swift in Sources */,
 				A3F4B6C61C67915500E6B1EC /* FayeClientViewController.swift in Sources */,
 				A3F4B6C41C6781F000E6B1EC /* ChatGuestViewController.swift in Sources */,
