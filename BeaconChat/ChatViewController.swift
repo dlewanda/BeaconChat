@@ -14,13 +14,14 @@ struct Message {
     var text: String = ""
 }
 
-class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     let MAX_SIZE: Int = 10000
 
     @IBOutlet weak var chatLogTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
+
 
     var fayeClientVC: FayeClientViewController? = nil
 
@@ -29,9 +30,38 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         chatLogTableView.delegate = self
         chatLogTableView.dataSource = self
+        chatLogTableView.keyboardDismissMode = .Interactive
+        
+        messageTextField.delegate = self
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tap:")
+        view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
+    }
+
+    func resignTextViewFirstResponders(parent: UIView) {
+        for child in parent.subviews {
+            if (child is UITextField) && child.isFirstResponder() {
+                child.resignFirstResponder()
+            } else if child.subviews.count > 0 {
+                resignTextViewFirstResponders(child)
+            }
+        }
+    }
+
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        resignTextViewFirstResponders(self.view)
+//    }
+
+    func tap(gesture: UITapGestureRecognizer) {
+        if let parent = self.parentViewController {
+            resignTextViewFirstResponders(parent.view)
+        } else {
+            resignTextViewFirstResponders(self.view)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +72,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func sendMessage(sender: AnyObject) {
         if let fayeClientVC = fayeClientVC {
             fayeClientVC.sendMessage(messageTextField.text!)
+            messageTextField.text = ""
         }
     }
 
@@ -68,7 +99,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let lastIndexPath = NSIndexPath(forRow: chatLogTableView.numberOfRowsInSection(0) - 1, inSection: chatLogTableView.numberOfSections - 1)
         chatLogTableView.scrollToRowAtIndexPath(lastIndexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
     }
-    
+
+    func setConnected(connected: Bool) {
+        messageTextField.enabled = connected
+        sendButton.enabled = connected
+    }
+
     // MARK: UITableViewDelegate
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -93,5 +129,13 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Pass the selected object to the new view controller.
     }
     */
+    // MARK: UITextViewDelegate
+    /**
+    * Called when 'return' key pressed. return NO to ignore.
+    */
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        messageTextField.resignFirstResponder()
+        return true
+    }
 
 }

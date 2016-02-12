@@ -50,6 +50,53 @@ class FayeClientViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tap:")
+        view.addGestureRecognizer(tapGesture)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    func keyboardWillShow(notification: NSNotification) {
+
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y -= keyboardSize.height
+        }
+
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            self.view.frame.origin.y += keyboardSize.height
+        }
+    }
+
+    func resignTextViewFirstResponders(parent: UIView) {
+        for child in parent.subviews {
+            if (child is UITextField) {
+                if child.isFirstResponder() {
+                    child.resignFirstResponder()
+                } else {
+                    NSLog("Found UITextField that's not first responder")
+                }
+            } else if child.subviews.count > 0 {
+                resignTextViewFirstResponders(child)
+            }
+        }
+    }
+    //
+    //    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    //        resignTextViewFirstResponders(self.view)
+    //    }
+
+    func tap(gesture: UITapGestureRecognizer) {
+        resignTextViewFirstResponders(self.view)
+    }
+
     func addChatViewController(chatView: UIView) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         chatViewController = storyboard.instantiateViewControllerWithIdentifier("ChatViewController") as! ChatViewController
@@ -79,6 +126,7 @@ class FayeClientViewController: UIViewController {
 
             fayeClient.connect({ () -> Void in
                 self.state = .CONNECTED
+                self.chatViewController.setConnected(true)
                 connected()
                 self.sendMessage("Hello")
                 }) { (error) -> Void in
@@ -89,6 +137,7 @@ class FayeClientViewController: UIViewController {
     func disconnectFromServer(disconnected:()->Void, failure:(error: NSError)->Void) {
         if state == .CONNECTED || state == .CONNECTING {
             state = .DISCONNECTING
+            chatViewController.setConnected(false)
             fayeClient.disconnect({ () -> Void in
                 self.state = .DISCONNECTED
                 disconnected()
@@ -109,4 +158,5 @@ class FayeClientViewController: UIViewController {
     func postMessage(message: String) {
         self.chatViewController.messageReceived(message)
     }
+
 }
