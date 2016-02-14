@@ -62,39 +62,33 @@ class FayeClientViewController: UIViewController {
     }
 
     func keyboardWillShow(notification: NSNotification) {
-
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y -= keyboardSize.height
-        }
-
+        adjustForKeyboard(notification, appearing: true)
     }
 
     func keyboardWillHide(notification: NSNotification) {
+        adjustForKeyboard(notification, appearing: false)
+    }
+
+    func adjustForKeyboard(notification:NSNotification, appearing: Bool) {
+
+        let userInfo = notification.userInfo
+        let animationDuration = (userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSValue) as! Double
+        let animationCurve = userInfo?[UIKeyboardAnimationCurveUserInfoKey]?.integerValue
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            self.view.frame.origin.y += keyboardSize.height
+            UIView.animateWithDuration(animationDuration, delay: 0, options: animationOptionsWithCurve(animationCurve!), animations: { () -> Void in
+
+                self.view.frame.origin.y += keyboardSize.height * (appearing ? -1 : 1)
+                }, completion: { (finished: Bool) in
+            })
         }
     }
 
-    func resignTextViewFirstResponders(parent: UIView) {
-        for child in parent.subviews {
-            if (child is UITextField) {
-                if child.isFirstResponder() {
-                    child.resignFirstResponder()
-                } else {
-                    NSLog("Found UITextField that's not first responder")
-                }
-            } else if child.subviews.count > 0 {
-                resignTextViewFirstResponders(child)
-            }
-        }
+    func animationOptionsWithCurve(curve: Int) -> UIViewAnimationOptions {
+        return UIViewAnimationOptions(rawValue: UInt(curve << 16))
     }
-    //
-    //    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    //        resignTextViewFirstResponders(self.view)
-    //    }
 
     func tap(gesture: UITapGestureRecognizer) {
-        resignTextViewFirstResponders(self.view)
+        view.endEditing(true)
     }
 
     func addChatViewController(chatView: UIView) {

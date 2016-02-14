@@ -33,36 +33,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         chatLogTableView.delegate = self
         chatLogTableView.dataSource = self
-        chatLogTableView.keyboardDismissMode = .Interactive
-        
+
         messageTextField.delegate = self
 
-        let tapGesture = UITapGestureRecognizer(target: self, action: "tap:")
-        view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
     }
 
-    func resignTextViewFirstResponders(parent: UIView) {
-        for child in parent.subviews {
-            if (child is UITextField) && child.isFirstResponder() {
-                child.resignFirstResponder()
-            } else if child.subviews.count > 0 {
-                resignTextViewFirstResponders(child)
-            }
-        }
-    }
-
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        resignTextViewFirstResponders(self.view)
-//    }
-
-    func tap(gesture: UITapGestureRecognizer) {
-        if let parent = self.parentViewController {
-            resignTextViewFirstResponders(parent.view)
-        } else {
-            resignTextViewFirstResponders(self.view)
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -70,6 +46,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     @IBAction func sendMessage(sender: AnyObject) {
+        sendMessage()
+    }
+
+    func sendMessage() {
         if let fayeClientVC = fayeClientVC {
             fayeClientVC.sendMessage(messageTextField.text!)
             messageTextField.text = ""
@@ -134,7 +114,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     * Called when 'return' key pressed. return NO to ignore.
     */
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        messageTextField.resignFirstResponder()
+        //messageTextField.resignFirstResponder()
+        sendMessage()
         return true
     }
 
