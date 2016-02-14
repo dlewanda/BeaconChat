@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A30454041C6A6A5F006D1650 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30454031C6A6A5F006D1650 /* ChatViewController.swift */; };
 		A30454071C6B86EA006D1650 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A30454051C6B86EA006D1650 /* LICENSE */; };
-		A30454081C6B86EA006D1650 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A30454061C6B86EA006D1650 /* README.md */; };
 		A3F4B6901C66975400E6B1EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B68F1C66975400E6B1EC /* AppDelegate.swift */; };
 		A3F4B6921C66975400E6B1EC /* ChatHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4B6911C66975400E6B1EC /* ChatHostViewController.swift */; };
 		A3F4B6951C66975400E6B1EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3F4B6931C66975400E6B1EC /* Main.storyboard */; };
@@ -350,7 +349,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30454081C6B86EA006D1650 /* README.md in Sources */,
 				A3F4B6921C66975400E6B1EC /* ChatHostViewController.swift in Sources */,
 				A3F4B6C61C67915500E6B1EC /* FayeClientViewController.swift in Sources */,
 				A3F4B6C41C6781F000E6B1EC /* ChatGuestViewController.swift in Sources */,

@@ -50,6 +50,47 @@ class FayeClientViewController: UIViewController {
         super.init(coder: aDecoder)
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tap:")
+        view.addGestureRecognizer(tapGesture)
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    func keyboardWillShow(notification: NSNotification) {
+        adjustForKeyboard(notification, appearing: true)
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+        adjustForKeyboard(notification, appearing: false)
+    }
+
+    func adjustForKeyboard(notification:NSNotification, appearing: Bool) {
+
+        let userInfo = notification.userInfo
+        let animationDuration = (userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSValue) as! Double
+        let animationCurve = userInfo?[UIKeyboardAnimationCurveUserInfoKey]?.integerValue
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+            UIView.animateWithDuration(animationDuration, delay: 0, options: animationOptionsWithCurve(animationCurve!), animations: { () -> Void in
+
+                self.view.frame.origin.y += keyboardSize.height * (appearing ? -1 : 1)
+                }, completion: { (finished: Bool) in
+            })
+        }
+    }
+
+    func animationOptionsWithCurve(curve: Int) -> UIViewAnimationOptions {
+        return UIViewAnimationOptions(rawValue: UInt(curve << 16))
+    }
+
+    func tap(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+
     func addChatViewController(chatView: UIView) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         chatViewController = storyboard.instantiateViewControllerWithIdentifier("ChatViewController") as! ChatViewController
@@ -79,6 +120,7 @@ class FayeClientViewController: UIViewController {
 
             fayeClient.connect({ () -> Void in
                 self.state = .CONNECTED
+                self.chatViewController.setConnected(true)
                 connected()
                 self.sendMessage("Hello")
                 }) { (error) -> Void in
@@ -89,6 +131,7 @@ class FayeClientViewController: UIViewController {
     func disconnectFromServer(disconnected:()->Void, failure:(error: NSError)->Void) {
         if state == .CONNECTED || state == .CONNECTING {
             state = .DISCONNECTING
+            chatViewController.setConnected(false)
             fayeClient.disconnect({ () -> Void in
                 self.state = .DISCONNECTED
                 disconnected()
@@ -109,4 +152,5 @@ class FayeClientViewController: UIViewController {
     func postMessage(message: String) {
         self.chatViewController.messageReceived(message)
     }
+
 }
